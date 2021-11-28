@@ -13,13 +13,13 @@ def insert_sort(array: list):
 def binary_search(array: list, target: int):
     low = 0
     high = len(array) - 1
-    # Если target не в спике, будем искать в словаре с ближайщими элементами
+    # Если target не в списке, будем искать в словаре с ближайшими элементами
     nearest = {}  # индекс: разность между искомым и текущим элементами
 
     while low <= high:
         mid = (low + high) // 2
         if target == array[mid]:
-            print(f"Индекс элемента меньшего искомого {mid - 1}\
+            print(f"Индекс элемент меньше искомого {mid - 1}\
                 \nИндекс искомого элемента {mid}")
             return True
         elif target < array[mid]:
@@ -31,7 +31,7 @@ def binary_search(array: list, target: int):
     nearest_indexes(nearest)
 
 
-# Если искомого элемента нет в списке, то мы ищем ближайщие
+# Если искомого элемента нет в списке, то мы ищем ближайшие
 def nearest_indexes(pairs: dict):
     keys = list(pairs.keys())
     low = keys[-2]
@@ -42,10 +42,10 @@ def nearest_indexes(pairs: dict):
 
 
 try:
-    data = [int(i) for i in input("Введите числа через пробел:\n").split()]
+    data = [int(i) for i in input("Введите последовательность чисел через пробел: ").split()]
     n = int(input("Введите искомое число:\n"))
-except TypeError:
-    print("Вводимая строка должна состоять только из чисел")
+except  ValueError:
+    print("Пожалуйста, вводите только числа")
 
 
 data = insert_sort(data)
