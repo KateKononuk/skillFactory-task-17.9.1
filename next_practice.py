@@ -1,20 +1,23 @@
-def insert_sort(array: list):
+def insert_sort(array):
+    '''
+        Insert Sort for input numbers
+    '''
     for i in range(len(array)):
-        current = array[i]
-        while i > 0 and array[i - 1] > current:
+        element = array[i]
+        while i > 0 and array[i - 1] > element:
             array[i] = array[i - 1]
             i -= 1
-        array[i] = current
+        array[i] = element
         print(array)
     return array
 
 
-# Итеративный бинарный поиск
-def binary_search(array: list, target: int):
+# бинарный поиск
+def binary_search(array, target):
     low = 0
     high = len(array) - 1
     # Если target не в списке, будем искать в словаре с ближайшими элементами
-    nearest = {}  # индекс: разность между искомым и текущим элементами
+    dict_elements = {}  # индекс: разность между искомым и текущим элементами
 
     while low <= high:
         mid = (low + high) // 2
@@ -23,16 +26,15 @@ def binary_search(array: list, target: int):
                 \nИндекс искомого элемента {mid}")
             return True
         elif target < array[mid]:
-            nearest[mid] = (target - array[mid])
+            dict_elements[mid] = (target - array[mid])
             high = mid - 1
         else:
-            nearest[mid] = (target - array[mid])
+            dict_elements[mid] = (target - array[mid])
             low = mid + 1
-    nearest_indexes(nearest)
+    dict_indexes(dict_elements)
 
-
-# Если искомого элемента нет в списке, то мы ищем ближайшие
-def nearest_indexes(pairs: dict):
+    
+def dict_indexes(pairs: dict):
     keys = list(pairs.keys())
     low = keys[-2]
     hight = keys[-1]
